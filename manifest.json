@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "Fake My Memorial",
+    "version": "1.0",
+    "description": "Autofills fake memorial data",
+    "icons": {
+        "48": "icons/night.png"
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "browser_action": {
+        "default_icon": "icons/night.png",
+        "default_title": "Fake Memorial",
+        "default_popup": "popup/choose_beast.html"
+    }
+}
