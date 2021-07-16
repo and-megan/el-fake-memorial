@@ -10,6 +10,15 @@ html, body {
   margin: 3% auto;
   padding: 4px;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1rem;
   cursor: pointer;
+}
+
+.fake-fill-in {
+  background-color: #cfe0f0;
+}
+
+.fake-fill-in-override {
+  background-color: #f0cfe0;
+  margin-top:10px;
 }

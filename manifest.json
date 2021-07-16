@@ -12,6 +12,6 @@
     "browser_action": {
         "default_icon": "icons/night.png",
         "default_title": "Fake Memorial",
-        "default_popup": "popup/choose_beast.html"
+        "default_popup": "popup/buttons.html"
     }
 }

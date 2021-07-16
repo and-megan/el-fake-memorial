@@ -30,9 +30,9 @@ function initFaker() {
 }
 
 function reportExecuteScriptError(error) {
-  console.error(`Failed to execute beastify content script: ${error.message}`);
+  console.error(`Failed to execute contentGenerator content script: ${error.message}`);
 }
 
-browser.tabs.executeScript({ file: "/content_scripts/beastify.js" })
+browser.tabs.executeScript({ file: "/content_scripts/contentGenerator.js" })
   .then(initFaker)
   .catch(reportExecuteScriptError);
