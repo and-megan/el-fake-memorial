@@ -249,8 +249,9 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
   function buildObit() {
     let obit = '';
     let isFirstParagraph = true;
+    const numPargraphs = Math.floor(Math.random() * 4) + 1;
 
-    [...Array(Math.floor(Math.random() * 5)).keys()].forEach(() => {
+    [...Array(numPargraphs).keys()].forEach(() => {
       const randomParagraph = PARAGRAPHS[Math.floor(Math.random() * PARAGRAPHS.length)]
 
       if (isFirstParagraph) {
@@ -279,7 +280,7 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
 
   function generateFakeEmail(firstName, lastName) {
     const domains = ['gmail.com', 'yahoo.com', 'everloved.com', 'mail.com', 'aol.com', 'hotmail.com', 'msn.com', 'orange.fr']
-    domain = domains[Math.floor(Math.random() * domains.length)];
+    const domain = domains[Math.floor(Math.random() * domains.length)];
     const randomNum = Math.floor(Math.random() * 9999999);
 
     return `${firstName}.${lastName}${randomNum}@${domain}`;

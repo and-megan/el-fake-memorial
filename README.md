@@ -13,6 +13,6 @@ This is WIP autofill FF browser extension to help generate memorial data for dev
 1. Go to `create` page
 2. Click moon icon in extensions
 3. Select `Run Faker` to fill in any empty fields
-4. Select `Run Faker (Override Data)` to fill all fields
+4. Select `Run Faker (Override)` to fill all fields
 
-**note**: Gender radio buttons will get reset for either `Run Faker` or `Run Faker (Override Data)`. `Male` is autofilled on load. I chose to ignore this value.
+**note**: Gender radio buttons will get reset for either `Run Faker` or `Run Faker (Override)`. `Male` is autofilled on load. I chose to ignore this value.
