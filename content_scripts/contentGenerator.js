@@ -182,31 +182,15 @@ const LOCATIONS = [
   'Ruidoso, NM, USA'
 ];
 
-const RELATIONSHIPS = [
-  'family',
-  'cousin',
-  'ex-partner',
-  'father',
-  'son',
-  'child',
-  'mother',
-  'daughter',
-  'sister-in-law',
-  'brother-in-law',
-  'child-in-law',
-  'step-father',
-  'step-mother',
-  'granddaughter',
-  'grandmother',
-  'grandfather',
-  'grandson',
-  'partner',
-  'sister',
-  'brother',
-  'step-son',
-  'step-parent',
-  'step-daughter'
-];
+NB_RELATIONSHIPS = ['step-parent', 'step-child', 'ex-partner', 'child', 'parent', 'sibling', 'child-in-law', 'grandparent', 'cousin', 'family', 'coworker', 'friend'];
+MASC_RELATIONSHIPS = ['step-father', 'step-son', 'ex-husband', 'father', 'son', 'brother', 'brother-in-law', 'grandson', 'grandfather', 'uncle', 'nephew'];
+FEM_RELATIONSHIPS = ['step-mother', 'step-daughter', 'ex-wife', 'mother', 'daughter', 'sister', 'sister-in-law', 'granddaughter', 'grandmother', 'aunt', 'niece'];
+
+const RELATIONSHIPS = {
+  'nb': NB_RELATIONSHIPS,
+  'masc': NB_RELATIONSHIPS.concat(MASC_RELATIONSHIPS),
+  'fem': NB_RELATIONSHIPS.concat(FEM_RELATIONSHIPS)
+};
 
 const PARAGRAPHS = [
   'There once lived an old man and an old woman who were peasants and had to work hard to earn their daily bread. The old man used to go to fix fences and do other odd jobs for the farmers around, and while he was gone the old woman, his wife, did the work of the house and worked in their own little plot of land.',
@@ -287,20 +271,33 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
     }
   }
 
-  function randomizeGender() {
+  function randomGender() {
     const genders = ["masc", "fem", "nb"]
     return genders[Math.floor(Math.random() * genders.length)];
   }
 
+  function generateFakeEmail(firstName, lastName) {
+    const domains = ['gmail.com', 'yahoo.com', 'everloved.com', 'mail.com', 'aol.com', 'hotmail.com', 'msn.com', 'orange.fr']
+    domain = domains[Math.floor(Math.random() * domains.length)];
+    const randomNum = Math.floor(Math.random() * 9999999);
+
+    return `${firstName}.${lastName}${randomNum}@${domain}`;
+  }
+
   function fillMemorialForm(override) {
-    const gender = randomizeGender();
-    const firstNames = FIRST_NAMES[gender];
+    console.log('override', override)
+    const deceasedGender = randomGender();
+    const deceasedFirstNames = FIRST_NAMES[deceasedGender];
+
+    const creatorGender = randomGender();
+    const creatorFirstNames = FIRST_NAMES[creatorGender];
+    const creatorRelationships = RELATIONSHIPS[creatorGender];
 
     const firstName = document.querySelector('#id_deceased-first_name');
-    fillInput(override, firstName, firstNames[Math.floor(Math.random() * firstNames.length)])
+    fillInput(override, firstName, deceasedFirstNames[Math.floor(Math.random() * deceasedFirstNames.length)])
 
     const middleName = document.querySelector('#id_deceased-middle_name');
-    fillInput(override, middleName, firstNames[Math.floor(Math.random() * firstNames.length)])
+    fillInput(override, middleName, deceasedFirstNames[Math.floor(Math.random() * deceasedFirstNames.length)])
 
     const lastName = document.querySelector('#id_deceased-last_name');
     fillInput(override, lastName, LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)])
@@ -327,10 +324,22 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
     fillInput(override, locationStr, LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)])
 
     const relationship = document.querySelector('#id_relationship-relationship_type');
-    fillInput(override, relationship, RELATIONSHIPS[Math.floor(Math.random() * RELATIONSHIPS.length)])
+    fillInput(override, relationship, creatorRelationships[Math.floor(Math.random() * creatorRelationships.length)])
 
     const obit = document.querySelector('#id_deceased-obituary');
     fillInput(override, obit, buildObit());
+
+
+    const newUserFirstName = document.querySelector('#id_passwordless-signup-first_name');
+    const newUserFirstNameValue = creatorFirstNames[Math.floor(Math.random() * creatorFirstNames.length)];
+    fillInput(override, newUserFirstName, newUserFirstNameValue);
+
+    const newUserLastName = document.querySelector('#id_passwordless-signup-last_name');
+    const newUserLastNameValue = LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
+    fillInput(override, newUserLastName, newUserLastNameValue);
+
+    const newUserEmail = document.querySelector('#id_passwordless-signup-email');
+    fillInput(override, newUserEmail, generateFakeEmail(newUserFirstNameValue, newUserLastNameValue));
 
     selectGenderInput(gender);
   }
