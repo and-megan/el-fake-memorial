@@ -223,6 +223,7 @@ const PARAGRAPHS = [
   'The high retail value of saffron is maintained on world markets because of labour-intensive harvesting methods, which require some 440,000 hand-picked saffron stigmas per kilogram (200,000 stigmas/lb) – equivalently, 150,000 crocus flowers per kilogram (70,000 flowers/lb). Forty hours of labour are needed to pick 150,000 flowers.',
   'The various saffron crocus cultivars give rise to thread types that are often regionally distributed and characteristically distinct. Varieties (not varieties in the botanical sense) from Spain, including the tradenames "Spanish Superior" and "Creme", are generally mellower in colour, flavour, and aroma; they are graded by government-imposed standards. Italian varieties are slightly more potent than Spanish. Greek saffron produced in the town of Krokos is PDO protected due to its particularly high-quality colour and strong flavour.'
 ];
+
 const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-gender_1", "nb": "id_deceased-gender_2" };
 
 
@@ -249,7 +250,7 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
     let obit = '';
     let isFirstParagraph = true;
 
-    [...Array(5).keys()].forEach(() => {
+    [...Array(Math.floor(Math.random() * 5)).keys()].forEach(() => {
       const randomParagraph = PARAGRAPHS[Math.floor(Math.random() * PARAGRAPHS.length)]
 
       if (isFirstParagraph) {
@@ -285,7 +286,6 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
   }
 
   function fillMemorialForm(override) {
-    console.log('override', override)
     const deceasedGender = randomGender();
     const deceasedFirstNames = FIRST_NAMES[deceasedGender];
 
