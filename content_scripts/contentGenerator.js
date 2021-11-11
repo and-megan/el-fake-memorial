@@ -1,3 +1,5 @@
+// const faker = require('faker');
+
 const FEM_FIRST_NAMES = [
   'Lupe',
   'Amanda',
@@ -28,7 +30,50 @@ const FEM_FIRST_NAMES = [
   'Julie',
   'Tammy',
   'Andrea',
-  'Pamela'
+  'Pamela',
+  'Nora',
+  'Isla',
+  'Leah',
+  'Lillian',
+  'Aurora',
+  'Violet',
+  'Zoe',
+  'Emilia',
+  'Gianna',
+  'Abigail',
+  'Olivia',
+  'Ava',
+  'Charlotte',
+  'Sophia',
+  'Isabella',
+  'Evelyn',
+  'Harper',
+  'Camila',
+  'Luna',
+  'Ella',
+  'Elizabeth',
+  'Avery',
+  'Mila',
+  'Scarlet',
+  'Eleanor',
+  'Madison',
+  'Leila',
+  'Penelope',
+  'Aria',
+  'Chloe',
+  'Grace',
+  'Hazel',
+  'Riley',
+  'Victoria',
+  'Stella',
+  'Hannah',
+  'Esther',
+  'Lucy',
+  'Addison',
+  'Paisley',
+  'Natalie',
+  'Naomi',
+  'Eliana',
 ];
 
 const MASC_FIRST_NAMES = [
@@ -61,11 +106,61 @@ const MASC_FIRST_NAMES = [
   'William',
   'Todd',
   'Patrick',
-  'David'
+  'David',
+  'Liam',
+  'Noah',
+  'Oliver',
+  'Elijah',
+  'William',
+  'James',
+  'Lucas',
+  'Henry',
+  'Alexander',
+  'Michael',
+  'Ethan',
+  'Daniel',
+  'Jacob',
+  'Levi',
+  'Sebastian',
+  'Mateo',
+  'Jack',
+  'Owen',
+  'Wyatt',
+  'Julian',
+  'Grayson',
+  'Leo',
+  'Isaac',
+  'Carter',
+  'Caleb',
+  'Nathan',
+  'Colton',
+  'Ezekiel',
+  'Luca',
+  'Landon',
+  'Silas',
+  'Waylon',
+  'Carson',
+  'Amir',
+  'Jorge',
+  'Kingston',
+  'Micah',
+  'Bryson',
+  'Declam',
+  'Chase',
+  'Miles',
+  'Luis',
+  'Lorenzo',
+  'Ivan',
+  'Zion',
+  'Carlos',
 ];
 
 const NB_FIRST_NAMES = [
   'Adrian',
+  'Mason',
+  'Ryder',
+  'Rowan',
+  'Michele',
   'Ash',
   'Aspen',
   'Bobbie',
@@ -92,9 +187,15 @@ const NB_FIRST_NAMES = [
   'River',
   'Skylar',
   'Rowan',
+  'Reid',
   'Kai',
   'Perry',
   'Hiro',
+  'Finn',
+  'Alex',
+  'Jesse',
+  'Caden',
+  'Lane',
 ];
 
 const FIRST_NAMES = {
@@ -179,7 +280,133 @@ const LOCATIONS = [
   'Rjim Maatoug, Tunisia',
   'Juneau, AK, USA',
   'Cleveland, OH, USA',
-  'Ruidoso, NM, USA'
+  'Ruidoso, NM, USA',
+  'Sonoma, CA, USA',
+  'Santa Rosa, CA, USA',
+  'Santa Clara, CA, USA',
+  'Santa Barbara, CA, USA',
+  'San Luis Obispo, CA, USA',
+  'Los Angeles, CA, USA',
+  'Los Gatos, CA, USA',
+  'Morgan Hill, CA, USA',
+  'King City, CA, USA',
+  'Kettleman City, CA, USA',
+  'Florence, AZ, USA',
+  'Sun Lakes, AZ, USA',
+  'Sun Valley, AZ, USA',
+  'Page, AZ, USA',
+  'Surprise, AZ, USA',
+  'Superior, AZ, USA',
+  'Steamboat, AZ, USA',
+  'Eloy, AZ, USA',
+  'Mesa, AZ, USA',
+  'Maricopa, AZ, USA',
+  'Casa Grande, AZ, USA',
+  'Prescott, AZ, USA',
+  'Buckeye, AZ, USA',
+  'Goodyear, AZ, USA',
+  'Scottsdale, AZ, USA',
+  'Tuscon, AZ, USA',
+  'Champlin, MN, USA',
+  'Mound, MN, USA',
+  'Marshall, MN, USA',
+  'Andover, MN, USA',
+  'Eden Prairie, MN, USA',
+  'Minnetonka, MN, USA',
+  'Osseo, MN, USA',
+  'Elk River, MN, USA',
+  'Mankato, MN, USA',
+  'Maplewood, MN, USA',
+  'Duluth, MN, USA',
+  'St. Cloud, MN, USA',
+  'Lakeville, MN, USA',
+  'Rockland, ME, USA',
+  'Steep Falls, ME, USA',
+  'Lisbon Falls, ME, USA',
+  'Newcastle, ME, USA',
+  'Orono, ME, USA',
+  'Winslow, ME, USA',
+  'Belfast, ME, USA',
+  'Bath, ME, USA',
+  'Caribou, ME, USA',
+  'Brunswick, ME, USA',
+  'Kittery, ME, USA',
+  'Topsham, ME, USA',
+  'Gorham, ME, USA',
+  'Biddleford, ME, USA',
+  'Auburn, ME, USA',
+  'Bangor, ME, USA',
+  'Dixfield, ME, USA',
+  'Presque Isle, ME, USA',
+  'Saco, ME, USA',
+  'Ogden, UT, USA',
+  'Kaysville, UT, USA',
+  'Lehi, UT, USA',
+  'Orem, UT, USA',
+  'Spanish Fork, UT, USA',
+  'Springville, UT, USA',
+  'Riverton, UT, USA',
+  'Kearns, UT, USA',
+  'Pleasant Grove, UT, USA',
+  'Mantua, UT, USA',
+  'Mapleton, UT, USA',
+  'Samak, UT, USA',
+  'Sandy, UT, USA',
+  'Tooele, UT, USA',
+  'Taylorsville, UT, USA',
+  'Lyden, NM, USA',
+  'Madrid, NM, USA',
+  'Portales, NM, USA',
+  'North Valley, NM, USA',
+  'Artesia, NM, USA',
+  'Clovis, NM, USA',
+  'Taos, NM, USA',
+  'Farmington, NM, USA',
+  'El Duende, NM, USA',
+  'El Cerro, NM, USA',
+  'El Rito, NM, USA',
+  'El Rancho, NM, USA',
+  'Silver City, NM, USA',
+  'Gallup, NM, USA',
+  'Roswell, NM, USA',
+  'Montpelier, VT, USA',
+  'Woodstock, VT, USA',
+  'Stowe, VT, USA',
+  'Randolph, VT, USA',
+  'Vergennes, VT, USA',
+  'Morrisville, VT, USA',
+  'Newport, VT, USA',
+  'Jericho, VT, USA',
+  'Waitsfield, VT, USA',
+  'Albany, VT, USA',
+  'Fairlawn, VA, USA',
+  'Tuckahoe, VA, USA',
+  'Charlottesville, VA, USA',
+  'Lake Ridge, VA, USA',
+  'Annandale, VA, USA',
+  'Leesburg, VA, USA',
+  'Ashburn, VA, USA',
+  'Richmond, VA, USA',
+  'Occoquan, VA, USA',
+  'Rockwood, VA, USA',
+  'Fancy Gap, VA, USA',
+  'Daleville, VA, USA',
+  'Reston, VA, USA',
+  'McLean, VA, USA',
+  'Suffolk, VA, USA',
+  'Arlington, VA, USA',
+  'Scotland, VA, USA',
+  'Cavespring, VA, USA',
+  'Florence, SC, USA',
+  'Mauldin, SC, USA',
+  'Greenwood, SC, USA',
+  'Hanahan, SC, USA',
+  'Wade Hampton, SC, USA',
+  'Aiken, SC, USA',
+  'Clemson, SC, USA',
+  'Lexington, SC, USA',
+  'Greer, SC, USA',
+  'Bluffton, SC, USA',
 ];
 
 NB_RELATIONSHIPS = ['step-parent', 'step-child', 'ex-partner', 'child', 'parent', 'sibling', 'child-in-law', 'grandparent', 'cousin', 'family', 'coworker', 'friend'];
@@ -279,77 +506,158 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
   }
 
   function generateFakeEmail(firstName, lastName) {
-    const domains = ['gmail.com', 'yahoo.com', 'everloved.com', 'mail.com', 'aol.com', 'hotmail.com', 'msn.com', 'orange.fr']
-    const domain = domains[Math.floor(Math.random() * domains.length)];
-    const randomNum = Math.floor(Math.random() * 9999999);
+    const randomNum = Math.floor(Math.random() * 999);
+    const words = [
+      'market', 'banana', 'eye', 'sea', 'jaguar', 'raven', 'rock', 'shell', 'idea',
+      'maple', 'ash', 'oak', 'leaf', 'star', 'twig', 'wind', 'water', 'fire', 'earth',
+      'mitten', 'nova', 'travel', 'ocean', 'meow', 'surf', 'skate', 'blue', 'green',
+    ];
+    const randomWord = words[Math.floor(Math.random() * words.length)]
+    const emailElements = [firstName, lastName, randomNum, randomWord];
+    const chosenElements = new Set();
+    while (chosenElements.size < 3) {
+      const idx = Math.floor(Math.random() * emailElements.length);
+      chosenElements.add(emailElements[idx]);
+    }
 
-    return `${firstName}.${lastName}${randomNum}@${domain}`;
+    const chosenElementsArr = Array.from(chosenElements);
+
+    return `${chosenElementsArr.join('')}@everloved.com`;
+    // return `${firstName}.${lastName}${randomNum}@${domain}`;
   }
 
-  function fillMemorialForm(override) {
+  function generateFirstName(gender) {
+    let names = [];
+    if (gender) {
+      names = FIRST_NAMES[gender];
+    } else {
+      names = FIRST_NAMES['fem'].concat(FIRST_NAMES['nb']).concat('masc');
+    }
+
+    return names[Math.floor(Math.random() * names.length)];
+  }
+
+  function generateLastName() {
+   return LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
+  }
+
+  function handleDeceased(override) {
     const deceasedGender = randomGender();
-    const deceasedFirstNames = FIRST_NAMES[deceasedGender];
+    const firstName = generateFirstName(deceasedGender);
+    const middleName = generateFirstName(deceasedGender);
+    const lastName = generateLastName();
 
+    const firstNameEl = document.querySelector('#id_deceased-first_name');
+    fillInput(override, firstNameEl, firstName)
+
+    const shouldHaveMiddleName = Math.random() > 0.5 ? true : false;
+    if (shouldHaveMiddleName) {
+      const middleNameEl = document.querySelector('#id_deceased-middle_name');
+      fillInput(override, middleNameEl, middleName)
+    }
+
+    const lastNameEl = document.querySelector('#id_deceased-last_name');
+    fillInput(override, lastNameEl, lastName)
+
+    const deathMonthEl = document.querySelector('#id_deceased-date_of_death_month');
+    fillInput(override, deathMonthEl, MONTHS[Math.floor(Math.random() * MONTHS.length)])
+
+    const deathDayEl = document.querySelector('#id_deceased-date_of_death_day');
+    fillInput(override, deathDayEl, DAYS[Math.floor(Math.random() * DAYS.length)])
+
+    const deathYearEl = document.querySelector('#id_deceased-date_of_death_year');
+    fillInput(override, deathYearEl, DEATH_YEARS[Math.floor(Math.random() * DEATH_YEARS.length)])
+
+    const birthMonthEl = document.querySelector('#id_deceased-date_of_birth_month');
+    fillInput(override, birthMonthEl, MONTHS[Math.floor(Math.random() * MONTHS.length)])
+
+    const birthDayEl = document.querySelector('#id_deceased-date_of_birth_day');
+    fillInput(override, birthDayEl, DAYS[Math.floor(Math.random() * DAYS.length)])
+
+    const birthYearEl = document.querySelector('#id_deceased-date_of_birth_year');
+    fillInput(override, birthYearEl, BIRTH_YEARS[Math.floor(Math.random() * BIRTH_YEARS.length)])
+
+    const locationStrEl = document.querySelector('#id_deceased-location_str');
+    fillInput(override, locationStrEl, LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)])
+
+    selectGenderInput(deceasedGender);
+  }
+
+  function handleObit(override) {
+    const obitEl = document.querySelector('#id_deceased-obituary');
+    fillInput(override, obitEl, buildObit());
+  }
+
+  function handleNewUser(override) {
     const creatorGender = randomGender();
-    const creatorFirstNames = FIRST_NAMES[creatorGender];
     const creatorRelationships = RELATIONSHIPS[creatorGender];
+    const lastName = generateLastName();
+    const firstName = generateFirstName(creatorGender);
 
-    const firstName = document.querySelector('#id_deceased-first_name');
-    fillInput(override, firstName, deceasedFirstNames[Math.floor(Math.random() * deceasedFirstNames.length)])
+    const relationshipEl = document.querySelector('#id_relationship-relationship_type');
+    fillInput(override, relationshipEl, creatorRelationships[Math.floor(Math.random() * creatorRelationships.length)])
 
-    const middleName = document.querySelector('#id_deceased-middle_name');
-    fillInput(override, middleName, deceasedFirstNames[Math.floor(Math.random() * deceasedFirstNames.length)])
+    const newUserFirstNameEl = document.querySelector('#id_passwordless-signup-first_name');
+    fillInput(override, newUserFirstNameEl, firstName);
 
-    const lastName = document.querySelector('#id_deceased-last_name');
-    fillInput(override, lastName, LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)])
+    const newUserEmailEl = document.querySelector('#id_passwordless-signup-email');
+    fillInput(override, newUserEmailEl, generateFakeEmail(firstName, lastName));
 
-    const deathMonth = document.querySelector('#id_deceased-date_of_death_month');
-    fillInput(override, deathMonth, MONTHS[Math.floor(Math.random() * MONTHS.length)])
+    const newUserLastNameEl = document.querySelector('#id_passwordless-signup-last_name');
+    fillInput(override, newUserLastNameEl, lastName);
 
-    const deathDay = document.querySelector('#id_deceased-date_of_death_day');
-    fillInput(override, deathDay, DAYS[Math.floor(Math.random() * DAYS.length)])
+  }
 
-    const deathYear = document.querySelector('#id_deceased-date_of_death_year');
-    fillInput(override, deathYear, DEATH_YEARS[Math.floor(Math.random() * DEATH_YEARS.length)])
+  function handleInvitePeople(override) {
+    let count = 0;
+    while (count < 5) {
+      const invitePeopleFirstNameEl = document.querySelector(`#id_invite_people-${count}-first_name`);
+      fillInput(override, invitePeopleFirstNameEl, generateFirstName())
 
-    const birthMonth = document.querySelector('#id_deceased-date_of_birth_month');
-    fillInput(override, birthMonth, MONTHS[Math.floor(Math.random() * MONTHS.length)])
+      const invitePeopleLastNameEl = document.querySelector(`#id_invite_people-${count}-last_name`);
+      fillInput(override, invitePeopleLastNameEl, generateLastName())
 
-    const birthDay = document.querySelector('#id_deceased-date_of_birth_day');
-    fillInput(override, birthDay, DAYS[Math.floor(Math.random() * DAYS.length)])
+      count += 1;
+    }
+  }
 
-    const birthYear = document.querySelector('#id_deceased-date_of_birth_year');
-    fillInput(override, birthYear, BIRTH_YEARS[Math.floor(Math.random() * BIRTH_YEARS.length)])
+  function handleDonation(override) {
+    const donationAmountEl = document.querySelector('#id_amount');
+    fillInput(override, donationAmountEl, Math.floor(Math.random() * 500))
 
-    const locationStr = document.querySelector('#id_deceased-location_str');
-    fillInput(override, locationStr, LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)])
+    const donorBillingNameEl = document.querySelector('#id_name');
+    fillInput(override, donorBillingNameEl, `${generateFirstName()} ${generateLastName()}`);
+  }
 
-    const relationship = document.querySelector('#id_relationship-relationship_type');
-    fillInput(override, relationship, creatorRelationships[Math.floor(Math.random() * creatorRelationships.length)])
+  function fillForm(override) {
+    handleNewUser(override)
 
-    const obit = document.querySelector('#id_deceased-obituary');
-    fillInput(override, obit, buildObit());
+    handleDeceased(override);
 
+    handleObit(override);
 
-    const newUserFirstName = document.querySelector('#id_passwordless-signup-first_name');
-    const newUserFirstNameValue = creatorFirstNames[Math.floor(Math.random() * creatorFirstNames.length)];
-    fillInput(override, newUserFirstName, newUserFirstNameValue);
+    handleDonation(override)
 
-    const newUserLastName = document.querySelector('#id_passwordless-signup-last_name');
-    const newUserLastNameValue = LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
-    fillInput(override, newUserLastName, newUserLastNameValue);
+    handleInvitePeople(override);
 
-    const newUserEmail = document.querySelector('#id_passwordless-signup-email');
-    fillInput(override, newUserEmail, generateFakeEmail(newUserFirstNameValue, newUserLastNameValue));
+    // const ccNumberEl = document.querySelector('[name="cardnumber"]');
+    // fillInput(override, ccNumberEl, '4242 4242 4242 4242');
 
-    selectGenderInput(gender);
+    // const expDateEl = document.querySelector('[name="exp-date"]');
+    // fillInput(override, expDateEl, '12/50');
+
+    // const securityCodeEl = document.querySelector('[name="cc-csc"]');
+    // fillInput(override, securityCodeEl, '123');
+
+    const zipCodeEl = document.querySelector('#id_postal_code');
+    fillInput(override, zipCodeEl, '12321');
   }
 
   browser.runtime.onMessage.addListener((message) => {
     if (message.command === "generateNoOverride") {
-      fillMemorialForm();
+      fillForm();
     } else if (message.command === "generateWithOverride") {
-      fillMemorialForm(true)
+      fillForm(true)
     } else {
       console.log('Command not recognized')
     }
