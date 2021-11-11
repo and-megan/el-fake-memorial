@@ -538,7 +538,7 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
   }
 
   function generateLastName() {
-   return LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
+    return LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
   }
 
   function handleDeceased(override) {
@@ -611,12 +611,17 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
   function handleInvitePeople(override) {
     let count = 0;
     while (count < 5) {
+      const first = generateFirstName();
+      const last = generateLastName();
+
       const invitePeopleFirstNameEl = document.querySelector(`#id_invite_people-${count}-first_name`);
-      fillInput(override, invitePeopleFirstNameEl, generateFirstName())
+      fillInput(override, invitePeopleFirstNameEl, first)
 
       const invitePeopleLastNameEl = document.querySelector(`#id_invite_people-${count}-last_name`);
-      fillInput(override, invitePeopleLastNameEl, generateLastName())
+      fillInput(override, invitePeopleLastNameEl, last)
 
+      const invitePeopleEmailEl = document.querySelector(`#id_invite_people-${count}-email`);
+      fillInput(override, invitePeopleEmailEl, generateFakeEmail(first, last));
       count += 1;
     }
   }
@@ -640,14 +645,14 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
 
     handleInvitePeople(override);
 
-    // const ccNumberEl = document.querySelector('[name="cardnumber"]');
-    // fillInput(override, ccNumberEl, '4242 4242 4242 4242');
+    const ccNumberEl = document.querySelector('[name="cardnumber"]');
+    fillInput(override, ccNumberEl, '4242 4242 4242 4242');
 
-    // const expDateEl = document.querySelector('[name="exp-date"]');
-    // fillInput(override, expDateEl, '12/50');
+    const expDateEl = document.querySelector('[name="exp-date"]');
+    fillInput(override, expDateEl, '12/50');
 
-    // const securityCodeEl = document.querySelector('[name="cc-csc"]');
-    // fillInput(override, securityCodeEl, '123');
+    const securityCodeEl = document.querySelector('[name="cc-csc"]');
+    fillInput(override, securityCodeEl, '123');
 
     const zipCodeEl = document.querySelector('#id_postal_code');
     fillInput(override, zipCodeEl, '12321');
