@@ -448,7 +448,21 @@ const PARAGRAPHS = [
   "A degree of uncertainty surrounds the origin of the English word 'saffron'. It might stem from the 12th-century Old French term safran, which comes from the Latin word safranum, from the Arabic za'farān, which comes from the Persian word zarparan meaning 'gold strung' (implying either the golden stamens of the flower or the golden color it creates when used as flavor).",
   'The saffron crocus, unknown in the wild, probably descends from Crocus cartwrightianus. It is a triploid that is "self-incompatible" and male sterile; it undergoes aberrant meiosis and is hence incapable of independent sexual reproduction—all propagation is by vegetative multiplication via manual "divide-and-set" of a starter clone or by interspecific hybridisation.',
   'The high retail value of saffron is maintained on world markets because of labour-intensive harvesting methods, which require some 440,000 hand-picked saffron stigmas per kilogram (200,000 stigmas/lb) – equivalently, 150,000 crocus flowers per kilogram (70,000 flowers/lb). Forty hours of labour are needed to pick 150,000 flowers.',
-  'The various saffron crocus cultivars give rise to thread types that are often regionally distributed and characteristically distinct. Varieties (not varieties in the botanical sense) from Spain, including the tradenames "Spanish Superior" and "Creme", are generally mellower in colour, flavour, and aroma; they are graded by government-imposed standards. Italian varieties are slightly more potent than Spanish. Greek saffron produced in the town of Krokos is PDO protected due to its particularly high-quality colour and strong flavour.'
+  'The various saffron crocus cultivars give rise to thread types that are often regionally distributed and characteristically distinct. Varieties (not varieties in the botanical sense) from Spain, including the tradenames "Spanish Superior" and "Creme", are generally mellower in colour, flavour, and aroma; they are graded by government-imposed standards. Italian varieties are slightly more potent than Spanish. Greek saffron produced in the town of Krokos is PDO protected due to its particularly high-quality colour and strong flavour.',
+  'The Dragon Shaman Chronicles book series.',
+  'Ethmia atriflorella is a moth in the family Depressariidae. It is found in Madagascar.',
+  'Madingou is a town located in southern Republic of the Congo. It is the capital city of the Madingou District and the Bouenza Region.',
+  'Show semi-diurnal habit and rather elongated narrow body. Abdomen entirely blue green. Head, thorax and abdomen without any white markings. Forewing dull brown with a greenish tinge. Hindwing purplish brown. Both wings are with a submarginal series of large white spots in the interspaces.',
+  'The Maharajah of Scindia provided a carved sandstone gateway, the Gwalior Gateway, which after the exhibition was sent in 200 packages to London\'s Victoria and Albert Museum and then displayed at the Colonial and Indian Exhibition in 1886.',
+  'The women\'s 100 metres hurdles sprint competition of the athletics events at the 2015 Pan American Games took place on July 21 at the CIBC Pan Am and Parapan Am Athletics Stadium.',
+  'Steele Brook is a river in Delaware County, New York. It flows into the West Branch Delaware River by Delhi.',
+  'Sangnier aimed to bring the Catholic Church into a greater conformity with French Republican ideals and to provide an alternative to anticlerical labour movements. The movement was initially successful, but was eventually condemned by Pope Pius X in the letter Notre charge apostolique in 1910. ',
+  'Owen Morgan, also known by his bardic name Morien (1836 – 16 December 1921) was a Welsh journalist, historian and writer of books on the subject of neo-druidism. Morgan was heavily influenced by the writings of both Iolo Morganwg and Myfyr Morganwg [cy], and much of his writing has been challenged by fellow academics.[',
+  'The exact date and place of Morgan\'s birth is unknown, as Morgan himself hid the details. Although the 1881 census states his year of birth as 1839, latter studies have placed it as 1836.',
+  'Torolf Elster (27 May 1911 – 4 November 2006) was a Norwegian newspaper and radio journalist, magazine editor, novelist, crime fiction writer and writer of short stories. He was Director-General of the Norwegian Broadcasting Corporation (NRK) from 1972 to 1981.',
+  'Julian Blaustein (May 30, 1913 – June 20, 1995) was an American film producer. Born in New York City, Blaustein graduated from Harvard University in 1933. He spent a year in flight training at the Randolph Air Force Base before heading to Hollywood, where he became a reader in the story department at Universal Pictures. He eventually was promoted to department head. He left Universal to work in a similar position at Paramount Pictures. ',
+  'Alexandra Jones is a historical archaeologist and educator. She is founder and chief executive officer of Archaeology in the Community, "a Washington, D.C.-based nonprofit that aims to increase awareness of archaeology and history."',
+  'Jones worked on season two of PBS’s Time Team America, a television program about archaeology. As Field Director of Archaeology on the televisIon show, Jones worked with middle and high school students at different archaeological sites around the U.S.',
 ];
 
 const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-gender_1", "nb": "id_deceased-gender_2" };
@@ -473,8 +487,8 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
     }
   }
 
-  function buildObit() {
-    let obit = '';
+  function buildText() {
+    let text = '';
     let isFirstParagraph = true;
     const numPargraphs = Math.floor(Math.random() * 4) + 1;
 
@@ -482,14 +496,14 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
       const randomParagraph = PARAGRAPHS[Math.floor(Math.random() * PARAGRAPHS.length)]
 
       if (isFirstParagraph) {
-        obit = randomParagraph;
+        text = randomParagraph;
         isFirstParagraph = false;
       } else {
-        obit = `${obit}\n\n${randomParagraph}`
+        text = `${text}\n\n${randomParagraph}`
       }
     });
 
-    return obit;
+    return text;
   }
 
   function selectGenderInput(gender) {
@@ -523,7 +537,6 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
     const chosenElementsArr = Array.from(chosenElements);
 
     return `${chosenElementsArr.join('')}@everloved.com`;
-    // return `${firstName}.${lastName}${randomNum}@${domain}`;
   }
 
   function generateFirstName(gender) {
@@ -583,9 +596,12 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
     selectGenderInput(deceasedGender);
   }
 
-  function handleObit(override) {
-    const obitEl = document.querySelector('#id_deceased-obituary');
-    fillInput(override, obitEl, buildObit());
+  function handleTextAreas(override) {
+    // const obitEl = document.querySelector('#id_deceased-obituary');
+    const textAreas = document.querySelectorAll('textarea');
+    textAreas.forEach((el) => {
+      fillInput(override, el, buildText());
+    });
   }
 
   function handleNewUser(override) {
@@ -639,7 +655,7 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
 
     handleDeceased(override);
 
-    handleObit(override);
+    handleTextAreas(override);
 
     handleDonation(override)
 
