@@ -467,6 +467,20 @@ const PARAGRAPHS = [
 
 const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-gender_1", "nb": "id_deceased-gender_2" };
 
+const WORDS = [
+  'market', 'banana', 'eye', 'sea', 'jaguar', 'raven', 'rock', 'shell', 'idea',
+  'maple', 'ash', 'oak', 'leaf', 'star', 'twig', 'wind', 'water', 'fire', 'earth',
+  'mitten', 'nova', 'travel', 'ocean', 'meow', 'surf', 'skate', 'blue', 'green',
+  'pecan', 'celsius', 'pie', 'pumpkin', 'salt', 'spice', 'stir', 'fairly', 'eggs',
+  'custard', 'bazaar', 'extra', 'pop', 'wobble', 'center', 'teach', 'almond', 'oat',
+  'stone', 'river', 'years', 'great', 'months', 'soups', 'fermented', 'nothing', 'yoyo',
+  'walnut', 'formed', 'undoubtedly', 'nuez', 'granite', 'russet', 'cravat', 'yesterday',
+  'plant', 'cactus', 'succulent', 'pocket', 'wilderness', 'unpredictable', 'bitter',
+  'sweet', 'graph', 'graft', 'alley', 'bark', 'centennial', 'remarkable', 'special',
+  'arugala', 'november', 'october', 'future', 'basis', 'basil', 'cilantro', 'menu',
+  'orleans', 'gatos', 'goats', 'camels', 'rio', 'carload', 'crop', 'recipe', 'creek',
+  'lake', 'lago', 'cornflakes', 'maize', 'quesadilla', 'eggnog', 'lunch', 'breakfast',
+];
 
 (function () {
   /**
@@ -521,13 +535,8 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
 
   function generateFakeEmail(firstName, lastName) {
     const randomNum = Math.floor(Math.random() * 999);
-    const words = [
-      'market', 'banana', 'eye', 'sea', 'jaguar', 'raven', 'rock', 'shell', 'idea',
-      'maple', 'ash', 'oak', 'leaf', 'star', 'twig', 'wind', 'water', 'fire', 'earth',
-      'mitten', 'nova', 'travel', 'ocean', 'meow', 'surf', 'skate', 'blue', 'green',
-    ];
-    const randomWord = words[Math.floor(Math.random() * words.length)]
-    const emailElements = [firstName, lastName, randomNum, randomWord];
+
+    const emailElements = [firstName, lastName, randomNum, generateRandomWord()];
     const chosenElements = new Set();
     while (chosenElements.size < 3) {
       const idx = Math.floor(Math.random() * emailElements.length);
@@ -552,6 +561,10 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
 
   function generateLastName() {
     return LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
+  }
+
+  function generateRandomWord() {
+    return WORDS[Math.floor(Math.random() * WORDS.length)];
   }
 
   function handleDeceased(override) {
@@ -624,6 +637,14 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
 
   }
 
+  function handleDonation(override) {
+    const donationAmountEl = document.querySelector('#id_amount');
+    fillInput(override, donationAmountEl, Math.floor(Math.random() * 500))
+
+    const donorBillingNameEl = document.querySelector('#id_name');
+    fillInput(override, donorBillingNameEl, `${generateFirstName()} ${generateLastName()}`);
+  }
+
   function handleInvitePeople(override) {
     let count = 0;
     while (count < 5) {
@@ -642,12 +663,14 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
     }
   }
 
-  function handleDonation(override) {
-    const donationAmountEl = document.querySelector('#id_amount');
-    fillInput(override, donationAmountEl, Math.floor(Math.random() * 500))
+  function handleCause(override) {
+    const causeNameEl = document.querySelector('#id_new-cause_name');
+    const causeName = `${generateRandomWord()} ${generateRandomWord()}`;
+    fillInput(override, causeNameEl, causeName);
 
-    const donorBillingNameEl = document.querySelector('#id_name');
-    fillInput(override, donorBillingNameEl, `${generateFirstName()} ${generateLastName()}`);
+
+    const causeGoalEl = document.querySelector('#id_new-fundraising_goal');
+    fillInput(override, causeGoalEl, Math.floor(Math.random() * 10000));
   }
 
   function fillForm(override) {
@@ -660,6 +683,8 @@ const GENDER_INPUT_IDS = { "masc": "id_deceased-gender_0", "fem": "id_deceased-g
     handleDonation(override)
 
     handleInvitePeople(override);
+
+    handleCause(override);
 
     const ccNumberEl = document.querySelector('[name="cardnumber"]');
     fillInput(override, ccNumberEl, '4242 4242 4242 4242');
