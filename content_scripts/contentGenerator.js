@@ -74,6 +74,11 @@ const FEM_FIRST_NAMES = [
   'Natalie',
   'Naomi',
   'Eliana',
+  'Morticia',
+  'Leana',
+  'Lana',
+  'Serena',
+  'Siobhan',
 ];
 
 const MASC_FIRST_NAMES = [
@@ -153,6 +158,12 @@ const MASC_FIRST_NAMES = [
   'Ivan',
   'Zion',
   'Carlos',
+  'Zeke',
+  'Lars',
+  'Hans',
+  'Christopher',
+  'Sal',
+  'Jason',
 ];
 
 const NB_FIRST_NAMES = [
@@ -196,6 +207,12 @@ const NB_FIRST_NAMES = [
   'Jesse',
   'Caden',
   'Lane',
+  'London',
+  'Kenya',
+  'Rowan',
+  'Fern',
+  'Freddie',
+  'Reed',
 ];
 
 const FIRST_NAMES = {
@@ -234,7 +251,64 @@ const LAST_NAMES = [
   'Dunn',
   'Goodman',
   'Freeman',
-  'Mendez'
+  'Mendez',
+  'MacLeon',
+  'Henderson',
+  'Logan',
+  'Lee',
+  'Liamson',
+  'Lakes',
+  'Keene',
+  'Key',
+  'Keyes',
+  'Pond',
+  'Riker',
+  'Picard',
+  'Place',
+  'Williams',
+  'Watson',
+  'Holmes',
+  'Holly',
+  'Honey',
+  'Acorn',
+  'Abbott',
+  'Costello',
+  'Piper',
+  'Coates',
+  'Clarke',
+  'Lewis',
+  'Cassat',
+  'Selma',
+  'Ashford',
+  'Whitlock',
+  'Yarbrough',
+  'Hangston',
+  'Hale',
+  'Elrod',
+  'Boone',
+  'Abraham',
+  'Amana',
+  'Madden',
+  'Katz',
+  'Caddel',
+  'Barlowe',
+  'Sai',
+  'Viotto',
+  'Villarreal',
+  'Lauier',
+  'Driscoll',
+  'Ellis',
+  'Finch',
+  'Menken',
+  'Crawford',
+  'Cunnigham',
+  'Cornelius',
+  'Abernathy',
+  'Simmons',
+  'Webb',
+  'Glick',
+  'Garfield',
+  'Gomez',
 ];
 
 
@@ -480,6 +554,16 @@ const WORDS = [
   'arugala', 'november', 'october', 'future', 'basis', 'basil', 'cilantro', 'menu',
   'orleans', 'gatos', 'goats', 'camels', 'rio', 'carload', 'crop', 'recipe', 'creek',
   'lake', 'lago', 'cornflakes', 'maize', 'quesadilla', 'eggnog', 'lunch', 'breakfast',
+  'golden', 'silver', 'ruby', 'amber', 'garnet', 'copper', 'serpentine', 'brass',
+  'bronze', 'iron', 'steel', 'aluminum', 'curry', 'potato', 'wheat', 'pool', 'azure',
+  'lapis', 'umber', 'sienna', 'wag', 'tail', 'flop', 'clip', 'flip', 'zig', 'zag',
+  'glacier', 'ice', 'freeze', 'froze', 'spray', 'lavender', 'tulip', 'sunflower',
+  'aster', 'lily', 'denim', 'button', 'knit', 'dozen', 'poker', 'blackjack', 'anklet',
+  'kaftan', 'sandal', 'boot', 'hike', 'campfire', 'shiny', 'sleepy', 'pearled', 'sharp',
+  'iridescent', 'jacket', 'clay', 'coiled', 'warmth', 'roam', 'arisen', 'encouraging',
+  'hog', 'forsaken', 'ballad', 'harmonica', 'reason', 'chew', 'answer', 'eyesight',
+  'donkey', 'energize', 'rolling', 'place', 'box', 'mud', 'wheel', 'diffuse', 'heart',
+  'leave', 'ants', 'friend', 'foe', 'sing', 'banjo', 'klezmer', 'strum', 'tap', 'leap',
 ];
 
 (function () {
@@ -499,6 +583,11 @@ const WORDS = [
         el.value = value;
       }
     }
+  }
+
+  function getAndFillElement(override, selector, value) {
+    const el = document.querySelector(selector);
+    fillInput(override, el, value);
   }
 
   function buildText() {
@@ -567,6 +656,10 @@ const WORDS = [
     return WORDS[Math.floor(Math.random() * WORDS.length)];
   }
 
+  function generateLocation() {
+    return LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)];
+  }
+
   function handleDeceased(override) {
     const deceasedGender = randomGender();
     const firstName = generateFirstName(deceasedGender);
@@ -604,7 +697,7 @@ const WORDS = [
     fillInput(override, birthYearEl, BIRTH_YEARS[Math.floor(Math.random() * BIRTH_YEARS.length)])
 
     const locationStrEl = document.querySelector('#id_deceased-location_str');
-    fillInput(override, locationStrEl, LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)])
+    fillInput(override, locationStrEl, generateLocation());
 
     selectGenderInput(deceasedGender);
   }
@@ -673,6 +766,70 @@ const WORDS = [
     fillInput(override, causeGoalEl, Math.floor(Math.random() * 10000));
   }
 
+  function handleFlowerDelivery(override) {
+    const deliveryDateEl = document.querySelector('#id_delivery_date');
+    const lastValue = deliveryDateEl.options[deliveryDateEl.options.length - 1].value;
+    fillInput(override, deliveryDateEl, lastValue);
+  }
+
+  function handleDeceasedRelation(override, firstNameSelector, lastNameSelector, relationshipSelector, locationSelector) {
+    const gender = randomGender();
+    const relationships = RELATIONSHIPS[gender];
+    const lastName = generateLastName();
+    const firstName = generateFirstName(gender);
+
+    const relationFirstNameEl = document.querySelector(firstNameSelector);
+    fillInput(override, relationFirstNameEl, firstName);
+
+    const relationLastNameEl = document.querySelector(lastNameSelector);
+    fillInput(override, relationLastNameEl, lastName);
+
+    const relationRelationshipEl = document.querySelector(relationshipSelector);
+    fillInput(override, relationRelationshipEl, relationships[Math.floor(Math.random() * relationships.length)])
+
+    if (locationSelector) {
+      getAndFillElement(override, locationSelector, generateLocation());
+    }
+  }
+
+  function handlePredeceased(override) {
+    handleDeceasedRelation(
+      override,
+      '#id_predeceased_relationship-raw_first_name',
+      '#id_predeceased_relationship-raw_last_name',
+      '#id_predeceased_relationship-relationship_type',
+      '#id_predeceased_relationship-location_str',
+    );
+  }
+
+  function handleSurvivedBy(override) {
+    handleDeceasedRelation(
+      override,
+      '#id_surviving_relationship-raw_first_name',
+      '#id_surviving_relationship-raw_last_name',
+      '#id_surviving_relationship-relationship_type',
+    );
+  }
+
+  // function handleMilestone(override) {
+  //   const otherStrSelector = '#id_milestone-milestone_other_str';
+  //   const otherStrValue = `${generateRandomWord()} ${generateRandomWord()} ${generateRandomWord()} ${generateRandomWord()}`;
+  //   getAndFillElement(override, otherStrSelector, otherStrValue);
+
+  //   const milestoneType = '#id_milestone-milestone_type';
+  //   const milestoneTypeEl = document.querySelector(milestoneType);
+  //   const randomOptionValue = milestoneTypeEl.options[Math.floor(Math.random() * milestoneTypeEl.options.length)].value;
+  //   fillInput(override, milestoneTypeEl, randomOptionValue);
+
+  //   const milestoneYear = '#id_milestone-date_occurred_year';
+  //   const milestoneYearEl = document.querySelector(milestoneYear);
+  //   const randomYearValue = milestoneYearEl.options[Math.floor(Math.random() * milestoneYearEl.options.length)].value;
+  //   fillInput(override, milestoneYearEl, randomYearValue);
+
+  //   const location = '#id_milestone-location_str';
+  //   getAndFillElement(override, location, generateLocation());
+  // }
+
   function fillForm(override) {
     handleNewUser(override)
 
@@ -686,7 +843,19 @@ const WORDS = [
 
     handleCause(override);
 
-    const ccNumberEl = document.querySelector('[name="cardnumber"]');
+    handlePredeceased(override);
+
+    handleSurvivedBy(override);
+
+    handleFlowerDelivery(override);
+
+
+    // handleMilestone(override);
+
+    const ccNumberWrapper = document.querySelector(".CardNumberField-input-wrapper");
+    console.log('ccNumberWrapper', ccNumberWrapper)
+    const ccNumberEl = ccNumberWrapper.querySelector('input');
+    console.log('ccNumberEl', ccNumberEl)
     fillInput(override, ccNumberEl, '4242 4242 4242 4242');
 
     const expDateEl = document.querySelector('[name="exp-date"]');
@@ -697,6 +866,11 @@ const WORDS = [
 
     const zipCodeEl = document.querySelector('#id_postal_code');
     fillInput(override, zipCodeEl, '12321');
+
+    const phoneEl = document.querySelector('[type="tel"]');
+    fillInput(override, phoneEl, '1231231234');
+
+
   }
 
   browser.runtime.onMessage.addListener((message) => {
